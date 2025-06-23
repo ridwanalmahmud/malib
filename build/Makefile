@@ -97,7 +97,7 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target list_install_components
 list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\" \"gmock\" \"gtest\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\" \"library\""
 .PHONY : list_install_components
 
 # Special rule for the target list_install_components
@@ -211,56 +211,17 @@ numen_tests/fast:
 .PHONY : numen_tests/fast
 
 #=============================================================================
-# Target rules for targets named gmock
+# Target rules for targets named unity
 
 # Build rule for target.
-gmock: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
-.PHONY : gmock
+unity: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 unity
+.PHONY : unity
 
 # fast build rule for target.
-gmock/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
-.PHONY : gmock/fast
-
-#=============================================================================
-# Target rules for targets named gmock_main
-
-# Build rule for target.
-gmock_main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
-.PHONY : gmock_main
-
-# fast build rule for target.
-gmock_main/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
-.PHONY : gmock_main/fast
-
-#=============================================================================
-# Target rules for targets named gtest
-
-# Build rule for target.
-gtest: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
-.PHONY : gtest
-
-# fast build rule for target.
-gtest/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
-.PHONY : gtest/fast
-
-#=============================================================================
-# Target rules for targets named gtest_main
-
-# Build rule for target.
-gtest_main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
-.PHONY : gtest_main
-
-# fast build rule for target.
-gtest_main/fast:
-	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
-.PHONY : gtest_main/fast
+unity/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/unity-build/CMakeFiles/unity.dir/build.make _deps/unity-build/CMakeFiles/unity.dir/build
+.PHONY : unity/fast
 
 src/utils.o: src/utils.c.o
 .PHONY : src/utils.o
@@ -289,29 +250,29 @@ src/utils.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/numen_static.dir/build.make CMakeFiles/numen_static.dir/src/utils.c.s
 .PHONY : src/utils.c.s
 
-tests/test.o: tests/test.c.o
-.PHONY : tests/test.o
+tests/utils_test.o: tests/utils_test.c.o
+.PHONY : tests/utils_test.o
 
 # target to build an object file
-tests/test.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/numen_tests.dir/build.make CMakeFiles/numen_tests.dir/tests/test.c.o
-.PHONY : tests/test.c.o
+tests/utils_test.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/numen_tests.dir/build.make CMakeFiles/numen_tests.dir/tests/utils_test.c.o
+.PHONY : tests/utils_test.c.o
 
-tests/test.i: tests/test.c.i
-.PHONY : tests/test.i
+tests/utils_test.i: tests/utils_test.c.i
+.PHONY : tests/utils_test.i
 
 # target to preprocess a source file
-tests/test.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/numen_tests.dir/build.make CMakeFiles/numen_tests.dir/tests/test.c.i
-.PHONY : tests/test.c.i
+tests/utils_test.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/numen_tests.dir/build.make CMakeFiles/numen_tests.dir/tests/utils_test.c.i
+.PHONY : tests/utils_test.c.i
 
-tests/test.s: tests/test.c.s
-.PHONY : tests/test.s
+tests/utils_test.s: tests/utils_test.c.s
+.PHONY : tests/utils_test.s
 
 # target to generate assembly for a file
-tests/test.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/numen_tests.dir/build.make CMakeFiles/numen_tests.dir/tests/test.c.s
-.PHONY : tests/test.c.s
+tests/utils_test.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/numen_tests.dir/build.make CMakeFiles/numen_tests.dir/tests/utils_test.c.s
+.PHONY : tests/utils_test.c.s
 
 # Help Target
 help:
@@ -326,19 +287,16 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... gmock"
-	@echo "... gmock_main"
-	@echo "... gtest"
-	@echo "... gtest_main"
 	@echo "... numen_shared"
 	@echo "... numen_static"
 	@echo "... numen_tests"
+	@echo "... unity"
 	@echo "... src/utils.o"
 	@echo "... src/utils.i"
 	@echo "... src/utils.s"
-	@echo "... tests/test.o"
-	@echo "... tests/test.i"
-	@echo "... tests/test.s"
+	@echo "... tests/utils_test.o"
+	@echo "... tests/utils_test.i"
+	@echo "... tests/utils_test.s"
 .PHONY : help
 
 

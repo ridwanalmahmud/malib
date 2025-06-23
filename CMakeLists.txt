@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 project(numen
     VERSION 1.0.0
     DESCRIPTION "Numen - A high-performance C math library"
-    LANGUAGES C CXX  # Add CXX here to enable C++ detection
+    LANGUAGES C
 )
 
 # Configuration options
@@ -23,7 +23,9 @@ if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_C_COMPILER_ID MATCHES "Clang")
 endif()
 
 # Library setup
-file(GLOB LIB_SOURCES src/*.c)
+set(LIB_SOURCES
+    src/utils.c
+)
 include_directories(include)
 
 # Shared library
@@ -44,7 +46,7 @@ if(BUILD_STATIC_LIBS)
         OUTPUT_NAME "numen"
     )
     target_link_libraries(numen_static PUBLIC m)
-    
+
     if(WIN32)
         set_target_properties(numen_static PROPERTIES OUTPUT_NAME "numen_s")
     endif()
@@ -53,42 +55,40 @@ endif()
 # Installation
 if(INSTALL_SYSTEM_WIDE)
     include(GNUInstallDirs)
-    
+
     install(TARGETS numen_shared numen_static
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     )
-    
+
     install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/numen)
 endif()
 
-# Testing with Google Test
+# Testing with Unity
 if(BUILD_TESTING)
     enable_testing()
-    
-    # Set C++ standard for tests
-    set(CMAKE_CXX_STANDARD 11)
-    set(CMAKE_CXX_STANDARD_REQUIRED ON)
-    
+
     include(FetchContent)
     FetchContent_Declare(
-        googletest
-        URL https://github.com/google/googletest/archive/refs/tags/v1.17.0.tar.gz
-        DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+        unity
+        GIT_REPOSITORY https://github.com/ThrowTheSwitch/Unity.git
+        GIT_TAG v2.6.1
     )
-    FetchContent_MakeAvailable(googletest)
-    
-    file(GLOB TEST_SOURCES tests/*.c)
+    FetchContent_MakeAvailable(unity)
+
+    set(TEST_SOURCES
+        tests/utils_test.c
+    )
     add_executable(numen_tests ${TEST_SOURCES})
-    
+
     if(BUILD_SHARED_LIBS)
         target_link_libraries(numen_tests PRIVATE numen_shared)
     else()
         target_link_libraries(numen_tests PRIVATE numen_static)
     endif()
-    
-    target_link_libraries(numen_tests PRIVATE gtest_main)
+
+    target_link_libraries(numen_tests PRIVATE unity)
     add_test(NAME numen_tests COMMAND numen_tests)
 endif()
 
@@ -100,13 +100,13 @@ if(BUILD_DOCS)
         if(NOT DOT_EXE)
             message(WARNING "dot not found - diagrams will be disabled")
         endif()
-        
+
         configure_file(
             docs/Doxyfile.in
             ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
             @ONLY
         )
-        
+
         add_custom_target(docs
             COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
