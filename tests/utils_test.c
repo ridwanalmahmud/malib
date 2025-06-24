@@ -17,9 +17,9 @@ void test_factorial_lut_exact_values(void) {
 
     // Test 0! to 20! against known values
     for (uint8_t n = 0; n <= 20; n++) {
-        TEST_ASSERT_TRUE_MESSAGE(factorial(n, &result),
+        TEST_ASSERT_TRUE_MESSAGE(lookup_factorial(n, &result),
                 "Factorial should succeed");
-        TEST_ASSERT_EQUAL_UINT64_MESSAGE(FACTORIAL_LUT[n], result,
+        TEST_ASSERT_EQUAL_UINT64_MESSAGE(FACTORIAL_LOOKUP[n], result,
                 "Factorial value mismatch");
     }
 }
@@ -29,11 +29,11 @@ void test_factorial_edge_cases(void) {
     uint64_t result;
 
     // 0! = 1 (special case)
-    TEST_ASSERT_TRUE(factorial(0, &result));
+    TEST_ASSERT_TRUE(lookup_factorial(0, &result));
     TEST_ASSERT_EQUAL_UINT64(1, result);
 
     // 1! = 1
-    TEST_ASSERT_TRUE(factorial(1, &result));
+    TEST_ASSERT_TRUE(lookup_factorial(1, &result));
     TEST_ASSERT_EQUAL_UINT64(1, result);
 }
 
@@ -42,13 +42,13 @@ void test_factorial_overflow_handling(void) {
     uint64_t result;
 
     // 21! should fail (overflow)
-    TEST_ASSERT_FALSE_MESSAGE(factorial(21, &result),
+    TEST_ASSERT_FALSE_MESSAGE(lookup_factorial(21, &result),
             "21! should overflow uint64_t");
 
     // Verify result unchanged on failure
     uint64_t prev = 0xDEADBEEF;
     result = prev;
-    TEST_ASSERT_FALSE(factorial(255, &result));
+    TEST_ASSERT_FALSE(lookup_factorial(255, &result));
     TEST_ASSERT_EQUAL_UINT64_MESSAGE(prev, result, 
             "Result buffer should be unchanged on failure");
 }
@@ -58,13 +58,13 @@ void test_factorial_invalid_input(void) {
     uint64_t result;
 
     // Negative input (should fail cleanly)
-    TEST_ASSERT_FALSE(factorial(-1, &result));
+    TEST_ASSERT_FALSE(lookup_factorial(-1, &result));
 
     // Input > 255 (uint8_t max)
-    TEST_ASSERT_FALSE(factorial(256, &result));
+    TEST_ASSERT_FALSE(lookup_factorial(256, &result));
 
     // Test overflow case
-    TEST_ASSERT_FALSE(factorial(21, &result));
+    TEST_ASSERT_FALSE(lookup_factorial(21, &result));
 }
 
 // Test runner
