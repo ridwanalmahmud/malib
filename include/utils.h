@@ -2,6 +2,7 @@
  * @file utils.h
  * @brief Includes Necessary utilities functions
  * @author ridwanalmahmud
+ * @contributors 
  * @date 22/06/25
  */
 
@@ -10,6 +11,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <math.h>
 
 // Maximum n before overflow (21! overflows uint64_t)
 #define MAX_FACTORIAL_INPUT 20
@@ -47,7 +49,7 @@ bool lut_factorial(int n, uint64_t* result);
 
 /**
  * @brief Computes factorial using the gamma function for extended range
- * 
+ *
  * @param n Input value (n >= 0)
  * @param[out] result Pointer to store the computed result
  * @return bool True if successful, false on error/overflow
@@ -63,7 +65,7 @@ bool lut_factorial(int n, uint64_t* result);
  * - Limited by floating-point precision
  * - Returns false for negative inputs
  */
-bool gamma_factorial(double n, double* result);
+bool gamma_factorial(double_t n, double_t* result);
 
 /**
  * @brief Computes factorial approximation using Stirling's formula
@@ -82,7 +84,7 @@ bool gamma_factorial(double n, double* result);
  * - Not suitable for exact integer results
  * - Returns false for negative inputs
  */
-bool stirlings_factorial(double n, double* result);
+bool stirlings_factorial(double_t n, double_t* result);
 
 /**
  * @brief Unified factorial dispatcher
@@ -96,6 +98,6 @@ bool stirlings_factorial(double n, double* result);
  *   - 0x08: Prefer exact results
  * @return true on success
  */
-bool factorial(double n, double* result, uint8_t flags);
+bool factorial(double_t n, double_t* result, uint8_t flags);
 
 #endif // !__UTILS_H

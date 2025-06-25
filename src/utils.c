@@ -1,10 +1,12 @@
 /**
  * @file utils.c
  * @brief Comprehensive factorial computation with multiple methods
+ * @author ridwanalmahmud
+ * @contributors 
+ * @date 22/06/25
  */
 
 #include "utils.h"
-#include <math.h>
 
 /**
  * @brief Exact factorial using lookup table (0-20)
@@ -18,7 +20,7 @@ bool lookup_factorial(int n, uint64_t* result) {
 /**
  * @brief Factorial via gamma function (supports non-integers)
  */
-bool gamma_factorial(double n, double* result) {
+bool gamma_factorial(double_t n, double_t* result) {
     if (n < 0 || isnan(n)) return false;
     if (n == 0) { *result = 1.0; return true; }
     if (n > 170) { *result = INFINITY; return false; }
@@ -30,14 +32,14 @@ bool gamma_factorial(double n, double* result) {
 /**
  * @brief Factorial approximation using Stirling's formula
  */
-bool stirlings_factorial(double n, double* result) {
+bool stirlings_factorial(double_t n, double_t* result) {
     if (n < 0 || isnan(n)) return false;
     if (n == 0 || n == 1) { *result = 1.0; return true; }
 
-    const double pi = 3.14159265358979323846;
-    double term1 = sqrt(2 * pi * n);
-    double term2 = pow(n / exp(1.0), n);
-    double term3 = 1.0 + (1.0 / (12.0 * n));
+    const double_t pi = 3.14159265358979323846;
+    double_t term1 = sqrt(2 * pi * n);
+    double_t term2 = pow(n / exp(1.0), n);
+    double_t term3 = 1.0 + (1.0 / (12.0 * n));
 
     *result = term1 * term2 * term3;
     return true;
@@ -46,7 +48,7 @@ bool stirlings_factorial(double n, double* result) {
 /**
  * @brief Unified factorial dispatcher
  */
-bool factorial(double n, double* result, uint8_t flags) {
+bool factorial(double_t n, double_t* result, uint8_t flags) {
     // Common validation
     if (n < 0 || isnan(n)) return false;
 
@@ -56,7 +58,7 @@ bool factorial(double n, double* result, uint8_t flags) {
         if (int_n != n) return false;
         uint64_t exact;
         if (!lookup_factorial(int_n, &exact)) return false;
-        *result = (double)exact;
+        *result = (double_t)exact;
         return true;
     }
     if (flags & FLAG_FORCE_GAMMA) return gamma_factorial(n, result);
@@ -70,12 +72,12 @@ bool factorial(double n, double* result, uint8_t flags) {
         if (int_n <= 20) {
             uint64_t exact;
             if (lookup_factorial(int_n, &exact)) {
-                *result = (double)exact;
+                *result = (double_t)exact;
                 return true;
             }
         }
 
-        // Larger but still exact in double
+        // Larger but still exact in double_t
         if (int_n <= 170) {
             return gamma_factorial(n, result);
         }
