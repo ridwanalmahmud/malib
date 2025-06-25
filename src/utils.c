@@ -1,8 +1,6 @@
 /**
  * @file utils.c
  * @brief Comprehensive factorial computation with multiple methods
- * @author ridwanalmahmud
- * @contributors 
  * @date 22/06/25
  */
 

@@ -1,8 +1,6 @@
 /**
  * @file utils.h
  * @brief Includes Necessary utilities functions
- * @author ridwanalmahmud
- * @contributors 
  * @date 22/06/25
  */
 

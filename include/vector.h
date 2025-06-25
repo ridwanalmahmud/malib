@@ -1,7 +1,6 @@
 /**
  * @file vector.h
  * @brief Includes core vector functionalities
- * @author ridwanalmahmud
  * @date 25/06/25
  */
 

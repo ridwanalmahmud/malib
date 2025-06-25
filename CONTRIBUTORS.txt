@@ -1,0 +1,11 @@
+This is a file of people that have contributed to the
+Numen project. The fields are: name (N), email (E),
+web-address (W), description (D), country (C).
+Thanks,
+        Robin
+-------------------------------------------------------
+
+N: Ridwan Al Mahmud
+E: ridwanalmahmud107@gmail.com
+D: Just a random student who loves math and computers
+C: Bangladesh
