@@ -25,6 +25,7 @@ endif()
 # Library setup
 set(LIB_SOURCES
     src/utils.c
+    src/vector.c
 )
 include_directories(include)
 
