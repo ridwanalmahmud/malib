@@ -261,6 +261,7 @@ int vector_capacity(const Vector *vector, size_t *out_capacity) {
 }
 
 // --- Special Vectors ---
+
 int vector_2d(double_t x, double_t y, Vector **out_vector) {
     if (!out_vector)
         return VECTOR_ERROR_NULL;
@@ -310,7 +311,8 @@ int vector_4d(double_t x,
     return VECTOR_SUCCESS;
 }
 
-// --- Vector operations ---
+// --- Vector arithmetic ---
+
 int vector_add(const Vector *a, const Vector *b, Vector *result) {
     if (!a || !b || !result)
         return VECTOR_ERROR_NULL;
@@ -394,6 +396,344 @@ int vector_negate(const Vector *a, Vector *result) {
     for (size_t i = 0; i < a->size; i++) {
         result->elements[i] = -a->elements[i];
     }
+    return VECTOR_SUCCESS;
+}
+
+// --- Vector operations ---
+
+// Optimized dot product with Kahan summation
+int vector_dot(const Vector *a, const Vector *b, double_t *result) {
+    if (!a || !b || !result)
+        return VECTOR_ERROR_NULL;
+    if (!vector_valid(a) || !vector_valid(b))
+        return VECTOR_ERROR_INIT;
+    if (a->size != b->size)
+        return VECTOR_ERROR_SIZE;
+
+    const double_t *a_data = a->elements;
+    const double_t *b_data = b->elements;
+    double_t sum = 0.0;
+    double_t c = 0.0; // Compensation for lost low-order bits
+
+    // Process 4 elements at a time
+    size_t i = 0;
+    for (; i + 3 < a->size; i += 4) {
+        // Kahan summation for each chunk
+        double_t y1 = a_data[i] * b_data[i] - c;
+        double_t t1 = sum + y1;
+        c = (t1 - sum) - y1;
+        sum = t1;
+
+        double_t y2 = a_data[i + 1] * b_data[i + 1] - c;
+        double_t t2 = sum + y2;
+        c = (t2 - sum) - y2;
+        sum = t2;
+
+        double_t y3 = a_data[i + 2] * b_data[i + 2] - c;
+        double_t t3 = sum + y3;
+        c = (t3 - sum) - y3;
+        sum = t3;
+
+        double_t y4 = a_data[i + 3] * b_data[i + 3] - c;
+        double_t t4 = sum + y4;
+        c = (t4 - sum) - y4;
+        sum = t4;
+    }
+
+    // Process remaining elements
+    for (; i < a->size; i++) {
+        double_t y = a_data[i] * b_data[i] - c;
+        double_t t = sum + y;
+        c = (t - sum) - y;
+        sum = t;
+    }
+
+    *result = sum;
+    return VECTOR_SUCCESS;
+}
+
+// Optimized 3D cross product (special case)
+int vector_cross(const Vector *a, const Vector *b, Vector *result) {
+    if (!a || !b || !result)
+        return VECTOR_ERROR_NULL;
+    if (!vector_valid(a) || !vector_valid(b) || !vector_valid(result))
+        return VECTOR_ERROR_INIT;
+    if (a->size != 3 || b->size != 3 || result->size != 3)
+        return VECTOR_ERROR_SIZE;
+
+    const double_t *a_data = a->elements;
+    const double_t *b_data = b->elements;
+    double_t *r_data = result->elements;
+
+    // Unrolled computation
+    r_data[0] = a_data[1] * b_data[2] - a_data[2] * b_data[1];
+    r_data[1] = a_data[2] * b_data[0] - a_data[0] * b_data[2];
+    r_data[2] = a_data[0] * b_data[1] - a_data[1] * b_data[0];
+
+    return VECTOR_SUCCESS;
+}
+
+// Magnitude using optimized dot product
+int vector_magnitude(const Vector *vector, double_t *result) {
+    if (!vector || !result)
+        return VECTOR_ERROR_NULL;
+    if (!vector_valid(vector))
+        return VECTOR_ERROR_INIT;
+
+    double_t dot;
+    int err = vector_dot(vector, vector, &dot);
+    if (err != VECTOR_SUCCESS)
+        return err;
+
+    *result = sqrt(dot);
+    return VECTOR_SUCCESS;
+}
+
+// In-place normalization
+int vector_normalize(Vector *vector) {
+    if (!vector)
+        return VECTOR_ERROR_NULL;
+    if (!vector_valid(vector))
+        return VECTOR_ERROR_INIT;
+
+    double_t mag;
+    int err = vector_magnitude(vector, &mag);
+    if (err != VECTOR_SUCCESS)
+        return err;
+
+    if (mag == 0.0)
+        return VECTOR_ERROR_MATH;
+
+    const double_t scale = 1.0 / mag;
+    double_t *data = vector->elements;
+
+    // Process 4 elements at a time
+    size_t i = 0;
+    for (; i + 3 < vector->size; i += 4) {
+        data[i] *= scale;
+        data[i + 1] *= scale;
+        data[i + 2] *= scale;
+        data[i + 3] *= scale;
+    }
+
+    // Process remaining elements
+    for (; i < vector->size; i++) {
+        data[i] *= scale;
+    }
+
+    return VECTOR_SUCCESS;
+}
+
+// Euclidean distance between vectors
+int vector_distance(const Vector *a, const Vector *b, double_t *result) {
+    if (!a || !b || !result)
+        return VECTOR_ERROR_NULL;
+    if (!vector_valid(a) || !vector_valid(b))
+        return VECTOR_ERROR_INIT;
+    if (a->size != b->size)
+        return VECTOR_ERROR_SIZE;
+
+    double_t sum_sq = 0.0;
+    const double_t *a_data = a->elements;
+    const double_t *b_data = b->elements;
+
+    // Process with pairwise differences
+    for (size_t i = 0; i < a->size; i++) {
+        double_t diff = a_data[i] - b_data[i];
+        sum_sq += diff * diff;
+    }
+
+    *result = sqrt(sum_sq);
+    return VECTOR_SUCCESS;
+}
+
+// Angle between vectors in radians
+int vector_angle(const Vector *a, const Vector *b, double_t *result) {
+    if (!a || !b || !result)
+        return VECTOR_ERROR_NULL;
+    if (!vector_valid(a) || !vector_valid(b))
+        return VECTOR_ERROR_INIT;
+    if (a->size != b->size)
+        return VECTOR_ERROR_SIZE;
+
+    double_t dot, a_mag, b_mag;
+    int err;
+
+    if ((err = vector_dot(a, b, &dot)))
+        return err;
+    if ((err = vector_magnitude(a, &a_mag)))
+        return err;
+    if ((err = vector_magnitude(b, &b_mag)))
+        return err;
+
+    if (a_mag == 0.0 || b_mag == 0.0)
+        return VECTOR_ERROR_MATH;
+
+    *result = acos(dot / (a_mag * b_mag));
+    return VECTOR_SUCCESS;
+}
+
+// --- Vector advanced operations ---
+
+// Linear interpolation between vectors (a + t(b - a))
+int vector_lerp(const Vector *a, const Vector *b, double_t t, Vector *result) {
+    if (!a || !b || !result)
+        return VECTOR_ERROR_NULL;
+    if (!vector_valid(a) || !vector_valid(b) || !vector_valid(result))
+        return VECTOR_ERROR_INIT;
+    if (a->size != b->size || a->size != result->size)
+        return VECTOR_ERROR_SIZE;
+
+    const double_t *a_data = a->elements;
+    const double_t *b_data = b->elements;
+    double_t *r_data = result->elements;
+    const double_t omt = 1.0 - t; // (1 - t) factor
+
+    // Process 4 elements at a time
+    size_t i = 0;
+    for (; i + 3 < a->size; i += 4) {
+        r_data[i] = omt * a_data[i] + t * b_data[i];
+        r_data[i + 1] = omt * a_data[i + 1] + t * b_data[i + 1];
+        r_data[i + 2] = omt * a_data[i + 2] + t * b_data[i + 2];
+        r_data[i + 3] = omt * a_data[i + 3] + t * b_data[i + 3];
+    }
+
+    // Process remaining elements
+    for (; i < a->size; i++) {
+        r_data[i] = omt * a_data[i] + t * b_data[i];
+    }
+
+    return VECTOR_SUCCESS;
+}
+
+// Spherical linear interpolation (normalized vectors only)
+int vector_slerp(const Vector *a, const Vector *b, double_t t, Vector *result) {
+    if (!a || !b || !result)
+        return VECTOR_ERROR_NULL;
+    if (!vector_valid(a) || !vector_valid(b) || !vector_valid(result))
+        return VECTOR_ERROR_INIT;
+    if (a->size != b->size || a->size != result->size)
+        return VECTOR_ERROR_SIZE;
+
+    double_t dot, omega;
+    int err;
+
+    // Calculate angle between vectors
+    if ((err = vector_dot(a, b, &dot)))
+        return err;
+
+    // Clamp dot product to avoid numerical issues
+    dot = fmax(-1.0, fmin(1.0, dot));
+    omega = acos(dot);
+
+    if (fabs(omega) < 1e-10) {
+        // Vectors are nearly parallel - use lerp instead
+        return vector_lerp(a, b, t, result);
+    }
+
+    const double_t *a_data = a->elements;
+    const double_t *b_data = b->elements;
+    double_t *r_data = result->elements;
+
+    const double_t sin_omega = sin(omega);
+    const double_t a_scale = sin((1.0 - t) * omega) / sin_omega;
+    const double_t b_scale = sin(t * omega) / sin_omega;
+
+    // Compute interpolated vector
+    for (size_t i = 0; i < a->size; i++) {
+        r_data[i] = a_scale * a_data[i] + b_scale * b_data[i];
+    }
+
+    return VECTOR_SUCCESS;
+}
+
+// Projection of a onto b (proj_b a)
+int vector_project(const Vector *a, const Vector *b, Vector *result) {
+    if (!a || !b || !result)
+        return VECTOR_ERROR_NULL;
+    if (!vector_valid(a) || !vector_valid(b) || !vector_valid(result))
+        return VECTOR_ERROR_INIT;
+    if (a->size != b->size || a->size != result->size)
+        return VECTOR_ERROR_SIZE;
+
+    double_t dot_aa, dot_ab;
+    int err;
+
+    if ((err = vector_dot(b, b, &dot_aa)))
+        return err;
+    if ((err = vector_dot(a, b, &dot_ab)))
+        return err;
+
+    if (dot_aa == 0.0)
+        return VECTOR_ERROR_MATH;
+
+    const double_t scale = dot_ab / dot_aa;
+    const double_t *b_data = b->elements;
+    double_t *r_data = result->elements;
+
+    // Compute projection
+    for (size_t i = 0; i < a->size; i++) {
+        r_data[i] = scale * b_data[i];
+    }
+
+    return VECTOR_SUCCESS;
+}
+
+// Rejection of a from b (a - proj_b a)
+int vector_reject(const Vector *a, const Vector *b, Vector *result) {
+    if (!a || !b || !result)
+        return VECTOR_ERROR_NULL;
+    if (!vector_valid(a) || !vector_valid(b) || !vector_valid(result))
+        return VECTOR_ERROR_INIT;
+    if (a->size != b->size || a->size != result->size)
+        return VECTOR_ERROR_SIZE;
+
+    // First compute projection
+    int err = vector_project(a, b, result);
+    if (err != VECTOR_SUCCESS)
+        return err;
+
+    // Then subtract from original vector
+    const double_t *a_data = a->elements;
+    double_t *r_data = result->elements;
+
+    for (size_t i = 0; i < a->size; i++) {
+        r_data[i] = a_data[i] - r_data[i];
+    }
+
+    return VECTOR_SUCCESS;
+}
+
+// Reflection of a over b (like mirror reflection)
+int vector_reflect(const Vector *a, const Vector *b, Vector *result) {
+    if (!a || !b || !result)
+        return VECTOR_ERROR_NULL;
+    if (!vector_valid(a) || !vector_valid(b) || !vector_valid(result))
+        return VECTOR_ERROR_INIT;
+    if (a->size != b->size || a->size != result->size)
+        return VECTOR_ERROR_SIZE;
+
+    // Compute 2 * projection
+    Vector *temp = NULL;
+    int err;
+
+    if ((err = vector_create(a->size, &temp)))
+        return err;
+    if ((err = vector_project(a, b, temp))) {
+        vector_free(temp);
+        return err;
+    }
+
+    // result = a - 2 * projection
+    const double_t *a_data = a->elements;
+    const double_t *t_data = temp->elements;
+    double_t *r_data = result->elements;
+
+    for (size_t i = 0; i < a->size; i++) {
+        r_data[i] = a_data[i] - 2.0 * t_data[i];
+    }
+
+    vector_free(temp);
     return VECTOR_SUCCESS;
 }
 

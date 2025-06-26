@@ -77,12 +77,12 @@ int vector_div(const Vector *a, const Vector *b, Vector *result);
 int vector_negate(const Vector *a, Vector *result);
 
 // --- Vector operations ---
-int vector_dot(const Vector *a, const Vector *b, double_t result);
-int vector_cross(const Vector *a, const Vector *b, double_t result);
-int vector_magnitude(const Vector *vector);
-int vector_normalize(const Vector *vector);
-int vector_distance(const Vector *a, const Vector *b, double_t result);
-int vector_angle(const Vector *a, const Vector *b, double_t result);
+int vector_dot(const Vector *a, const Vector *b, double_t *result);
+int vector_cross(const Vector *a, const Vector *b, Vector *result);
+int vector_magnitude(const Vector *vector, double_t *result);
+int vector_normalize(Vector *vector);
+int vector_distance(const Vector *a, const Vector *b, double_t *result);
+int vector_angle(const Vector *a, const Vector *b, double_t *result);
 
 // --- Vector advanced operations ---
 int vector_lerp(const Vector *a, const Vector *b, double_t t, Vector *result);
