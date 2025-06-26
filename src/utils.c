@@ -9,7 +9,7 @@
 /**
  * @brief Exact factorial using lookup table (0-20)
  */
-bool lookup_factorial(int n, uint64_t* result) {
+bool lut_factorial(int n, uint64_t* result) {
     if (n < 0 || n > 20) return false;
     *result = FACTORIAL_LUT[n];
     return true;
@@ -55,7 +55,7 @@ bool factorial(double_t n, double_t* result, uint8_t flags) {
         int int_n = (int)n;
         if (int_n != n) return false;
         uint64_t exact;
-        if (!lookup_factorial(int_n, &exact)) return false;
+        if (!lut_factorial(int_n, &exact)) return false;
         *result = (double_t)exact;
         return true;
     }
@@ -69,7 +69,7 @@ bool factorial(double_t n, double_t* result, uint8_t flags) {
         // Exact integer cases
         if (int_n <= 20) {
             uint64_t exact;
-            if (lookup_factorial(int_n, &exact)) {
+            if (lut_factorial(int_n, &exact)) {
                 *result = (double_t)exact;
                 return true;
             }

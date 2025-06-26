@@ -6,3 +6,6 @@ build/CMakeCache.txt
 build/CTestTestfile.cmake
 build/cmake_install.cmake
 .cache/
+build/CMakeDoxygenDefaults.cmake
+build/CMakeDoxyfile.in
+docs/

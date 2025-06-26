@@ -9,7 +9,7 @@ project(numen
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 option(BUILD_STATIC_LIBS "Build static libraries" ON)
 option(BUILD_TESTING "Build tests" ON)
-option(BUILD_DOCS "Build documentation" OFF)
+option(BUILD_DOCS "Build documentation" ON)
 option(INSTALL_SYSTEM_WIDE "Install system-wide" ON)
 
 # Compiler settings for C
@@ -102,7 +102,7 @@ if(BUILD_DOCS)
         endif()
 
         configure_file(
-            docs/Doxyfile.in
+            ${CMAKE_SOURCE_DIR}/Doxyfile.in
             ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
             @ONLY
         )

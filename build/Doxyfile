@@ -5,11 +5,11 @@
 
 # Project related configuration
 DOXYFILE_ENCODING      = UTF-8
-PROJECT_NAME           = "@PROJECT_NAME@"
-PROJECT_NUMBER         = "@PROJECT_VERSION@"
+PROJECT_NAME           = "numen"
+PROJECT_NUMBER         = "1.0.0"
 PROJECT_BRIEF          = "A lightweight, high-performance math library for C"
 PROJECT_LOGO           = 
-OUTPUT_DIRECTORY       = "@CMAKE_CURRENT_BINARY_DIR@/docs"
+OUTPUT_DIRECTORY       = "docs"
 CREATE_SUBDIRS         = NO
 ALLOW_UNICODE_NAMES    = NO
 OUTPUT_LANGUAGE        = English
@@ -26,8 +26,8 @@ HIDE_FRIEND_COMPOUNDS  = NO
 HIDE_IN_BODY_DOCS      = NO
 
 # Input configuration
-INPUT                  = "@CMAKE_CURRENT_SOURCE_DIR@/include" \
-                        "@CMAKE_CURRENT_SOURCE_DIR@/src"
+INPUT                  = "/root/loom/numen/include" \
+                        "/root/loom/numen/src"
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.h \
                          *.c \
@@ -60,15 +60,12 @@ HTML_EXTRA_FILES       =
 HTML_COLORSTYLE_HUE    = 220
 HTML_COLORSTYLE_SAT    = 100
 HTML_COLORSTYLE_GAMMA  = 80
-HTML_TIMESTAMP         = YES
 HTML_DYNAMIC_SECTIONS  = NO
 HTML_INDEX_NUM_ENTRIES = 100
 
 # Diagram generation
 HAVE_DOT               = YES
 DOT_NUM_THREADS        = 0
-DOT_FONTNAME           = Helvetica
-DOT_FONTSIZE           = 10
 DOT_FONTPATH           = 
 CLASS_GRAPH            = YES
 COLLABORATION_GRAPH    = YES
@@ -87,7 +84,7 @@ MATHJAX_EXTENSIONS     =
 MATHJAX_CODEFILE       = 
 
 # LaTeX output (disabled)
-GENERATE_LATEX         = NO
+GENERATE_LATEX         = YES
 
 # RTF output (disabled)
 GENERATE_RTF           = NO
@@ -111,17 +108,16 @@ SKIP_FUNCTION_MACROS   = YES
 
 # External references
 TAGFILES               = 
-GENERATE_TAGFILE       = "@CMAKE_CURRENT_BINARY_DIR@/docs/mathlib.tag"
+GENERATE_TAGFILE       = "/root/loom/numen/build/docs/mathlib.tag"
 ALLEXTERNALS           = NO
 EXTERNAL_GROUPS        = YES
 EXTERNAL_PAGES         = YES
 
 # Dot graph configuration
-DOT_PATH               = "@DOXYGEN_DOT_PATH@"
+DOT_PATH               = "/usr/sbin"
 DOTFILE_DIRS           = 
 DOT_GRAPH_MAX_NODES    = 100
 MAX_DOT_GRAPH_DEPTH    = 2
-DOT_TRANSPARENT        = YES
 DOT_MULTI_TARGETS      = YES
 GENERATE_LEGEND        = YES
 DOT_CLEANUP            = YES
