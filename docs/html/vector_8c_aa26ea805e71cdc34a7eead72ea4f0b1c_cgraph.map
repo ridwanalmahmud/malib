@@ -1,7 +1,0 @@
-<map id="vector_create_zero" name="vector_create_zero">
-<area shape="rect" id="Node000001" title="Create a new zero&#45;initialized vector." alt="" coords="5,31,136,55"/>
-<area shape="rect" id="Node000002" href="$vector_8c.html#a92167f6ca9c67ea7258b63f9016e9509" title="Create a new vector with specified size." alt="" coords="184,5,283,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,30,168,25,168,30,136,35"/>
-<area shape="rect" id="Node000003" href="$vector_8c.html#aecb66d8b2ba513eaf3cf2f1fc94be69f" title="Set all elements of vector to zero." alt="" coords="190,55,277,79"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="136,50,175,56,174,61,136,55"/>
-</map>

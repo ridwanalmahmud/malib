@@ -1,9 +1,0 @@
-<map id="include/utils.h" name="include/utils.h">
-<area shape="rect" id="Node000001" title="Includes Necessary utilities functions." alt="" coords="80,5,181,30"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,78,69,103"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,33,66,71,63,66,113,28"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="93,78,168,103"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="133,31,133,62,128,62,128,31"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="192,78,253,103"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="147,28,197,66,194,71,144,33"/>
-</map>

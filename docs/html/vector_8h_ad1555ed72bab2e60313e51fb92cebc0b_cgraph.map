@@ -1,8 +1,0 @@
-<map id="vector_mean" name="vector_mean">
-<area shape="rect" id="Node000001" title="Compute mean of vector elements." alt="" coords="5,31,101,55"/>
-<area shape="rect" id="Node000002" href="$vector_8c.html#ae5af7e6cf0fe0284676eace5d7e9d1b8" title="Compute sum of all vector elements." alt="" coords="149,5,237,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,32,133,26,134,31,102,37"/>
-<area shape="rect" id="Node000003" href="$vector_8c.html#a56ace2f765273db9af5fc21d854dabc0" title="Check if a vector is valid (non&#45;null and has allocated elements)" alt="" coords="285,31,374,55"/>
-<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="101,40,269,40,269,46,101,46"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="238,23,270,29,269,35,237,28"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="lut_factorial" name="lut_factorial">
-<area shape="rect" id="Node000001" title="Computes factorial using a lookup table for optimal performance." alt="" coords="121,5,209,30"/>
-<area shape="rect" id="Node000002" href="$utils_8c.html#abd589590a78a76840c5c97b9f1159fad" title="Unified factorial dispatcher." alt="" coords="5,5,73,30"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,20,73,20,73,15,105,15"/>
-</map>
