@@ -1,0 +1,15 @@
+<map id="vector_create" name="vector_create">
+<area shape="rect" id="Node000001" title="Create a new vector with specified size." alt="" coords="184,129,283,154"/>
+<area shape="rect" id="Node000002" href="$vector_8c.html#a5e7431f52ac209b16e9dc0bf4a29c119" title="Create 2D vector." alt="" coords="32,5,109,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,119,178,82,134,45,108,32,111,27,137,41,181,78,215,116"/>
+<area shape="rect" id="Node000003" href="$vector_8c.html#aceef4828af1761fba0693461ac88137b" title="Create 3D vector." alt="" coords="32,55,109,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="194,124,135,95,105,82,107,77,137,90,196,119"/>
+<area shape="rect" id="Node000004" href="$vector_8c.html#aaca804fcf27db27b7b123264e9cff5c1" title="Create 4D vector." alt="" coords="32,104,109,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="168,134,109,125,110,120,169,129"/>
+<area shape="rect" id="Node000005" href="$vector_8c.html#aa26ea805e71cdc34a7eead72ea4f0b1c" title="Create a new zero&#45;initialized vector." alt="" coords="5,153,136,178"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="168,154,136,159,135,153,168,149"/>
+<area shape="rect" id="Node000006" href="$vector_8c.html#ad14dc044ed553d90e511a83e359f48d5" title="Create vector from C array." alt="" coords="8,203,133,227"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="196,164,137,192,107,205,105,200,135,187,193,159"/>
+<area shape="rect" id="Node000007" href="$vector_8c.html#a5a141c5e57f20cf28639e08c687c4020" title="Reflect vector a over vector b (like mirror reflection)" alt="" coords="21,252,120,277"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="215,167,181,205,137,241,113,254,111,249,134,237,178,201,211,164"/>
+</map>

@@ -1,0 +1,95 @@
+\doxysection{utils.\+c}
+\hypertarget{utils_8c_source}{}\label{utils_8c_source}\index{src/utils.c@{src/utils.c}}
+\mbox{\hyperlink{utils_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00001}00001\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ utils.c}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00003}00003\ \textcolor{comment}{\ *\ @brief\ Comprehensive\ factorial\ computation\ with\ multiple\ methods}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00004}00004\ \textcolor{comment}{\ *\ @date\ 22/06/25}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00005}00005\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{utils_8h}{utils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00009}00009\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00010}00010\ \textcolor{comment}{\ *\ @brief\ Exact\ factorial\ using\ lookup\ table\ (0-\/20)}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00011}00011\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00012}\mbox{\hyperlink{utils_8h_a0b73de2c5ced6e83320662fd9af5fa68}{00012}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8c_a0b73de2c5ced6e83320662fd9af5fa68}{lut\_factorial}}(\textcolor{keywordtype}{int}\ n,\ uint64\_t*\ result)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00013}00013\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <\ 0\ ||\ n\ >\ 20)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00014}00014\ \ \ \ \ *result\ =\ \mbox{\hyperlink{utils_8h_aa108da84121821656d665395734026e9}{FACTORIAL\_LUT}}[n];}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00015}00015\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00016}00016\ \}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00017}00017\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00018}00018\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00019}00019\ \textcolor{comment}{\ *\ @brief\ Factorial\ via\ gamma\ function\ (supports\ non-\/integers)}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00020}00020\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00021}\mbox{\hyperlink{utils_8h_a7cfc8885aaa713b0686a8d1f36b2f483}{00021}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8c_a7cfc8885aaa713b0686a8d1f36b2f483}{gamma\_factorial}}(double\_t\ n,\ double\_t*\ result)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <\ 0\ ||\ isnan(n))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00023}00023\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ ==\ 0)\ \{\ *result\ =\ 1.0;\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ >\ 170)\ \{\ *result\ =\ INFINITY;\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00026}00026\ \ \ \ \ *result\ =\ tgamma(n\ +\ 1.0);}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{return}\ !isinf(*result)\ \&\&\ !isnan(*result);}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00029}00029\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00030}00030\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00031}00031\ \textcolor{comment}{\ *\ @brief\ Factorial\ approximation\ using\ Stirling's\ formula}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00032}00032\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00033}\mbox{\hyperlink{utils_8h_ac2ce2e93f97a84c57b18d4e0d4a297c9}{00033}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8c_ac2ce2e93f97a84c57b18d4e0d4a297c9}{stirlings\_factorial}}(double\_t\ n,\ double\_t*\ result)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <\ 0\ ||\ isnan(n))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ ==\ 0\ ||\ n\ ==\ 1)\ \{\ *result\ =\ 1.0;\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{const}\ double\_t\ pi\ =\ 3.14159265358979323846;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00038}00038\ \ \ \ \ double\_t\ term1\ =\ sqrt(2\ *\ pi\ *\ n);}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00039}00039\ \ \ \ \ double\_t\ term2\ =\ pow(n\ /\ exp(1.0),\ n);}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00040}00040\ \ \ \ \ double\_t\ term3\ =\ 1.0\ +\ (1.0\ /\ (12.0\ *\ n));}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00042}00042\ \ \ \ \ *result\ =\ term1\ *\ term2\ *\ term3;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00044}00044\ \}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00045}00045\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00046}00046\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00047}00047\ \textcolor{comment}{\ *\ @brief\ Unified\ factorial\ dispatcher}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00048}00048\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00049}\mbox{\hyperlink{utils_8h_abd589590a78a76840c5c97b9f1159fad}{00049}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8c_abd589590a78a76840c5c97b9f1159fad}{factorial}}(double\_t\ n,\ double\_t*\ result,\ uint8\_t\ flags)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ Common\ validation}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <\ 0\ ||\ isnan(n))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Forced\ method\ cases}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{if}\ (flags\ \&\ \mbox{\hyperlink{utils_8h_ae9f928f9ab6d20c1eb9f0ecefded71e4}{FLAG\_FORCE\_LOOKUP}})\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ int\_n\ =\ (int)n;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (int\_n\ !=\ n)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ uint64\_t\ exact;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{utils_8c_a0b73de2c5ced6e83320662fd9af5fa68}{lut\_factorial}}(int\_n,\ \&exact))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ *result\ =\ (double\_t)exact;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{if}\ (flags\ \&\ \mbox{\hyperlink{utils_8h_ae064b03785b48c8aadc6833e8baae152}{FLAG\_FORCE\_GAMMA}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{utils_8c_a7cfc8885aaa713b0686a8d1f36b2f483}{gamma\_factorial}}(n,\ result);}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{if}\ (flags\ \&\ \mbox{\hyperlink{utils_8h_aa51fb048bd65e9bc5de65446d147d985}{FLAG\_FORCE\_STIRLING}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{utils_8c_ac2ce2e93f97a84c57b18d4e0d4a297c9}{stirlings\_factorial}}(n,\ result);}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00065}00065\ \ \ \ \ \textcolor{comment}{//\ Automatic\ selection}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{if}\ ((flags\ \&\ \mbox{\hyperlink{utils_8h_ae59f2d22b87bffefedd1730a58ad2a83}{FLAG\_PREFER\_EXACT}})\ ||\ n\ ==\ (\textcolor{keywordtype}{int})n)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ int\_n\ =\ (int)n;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Exact\ integer\ cases}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (int\_n\ <=\ 20)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t\ exact;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{utils_8c_a0b73de2c5ced6e83320662fd9af5fa68}{lut\_factorial}}(int\_n,\ \&exact))\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *result\ =\ (double\_t)exact;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Larger\ but\ still\ exact\ in\ double\_t}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (int\_n\ <=\ 170)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{utils_8c_a7cfc8885aaa713b0686a8d1f36b2f483}{gamma\_factorial}}(n,\ result);}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Too\ large\ for\ exact\ representation}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flags\ \&\ \mbox{\hyperlink{utils_8h_ae59f2d22b87bffefedd1730a58ad2a83}{FLAG\_PREFER\_EXACT}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//\ Fallback\ to\ Stirling's}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{utils_8c_ac2ce2e93f97a84c57b18d4e0d4a297c9}{stirlings\_factorial}}(n,\ result);}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00089}00089\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,9 @@
+<map id="factorial" name="factorial">
+<area shape="rect" id="Node000001" title="Unified factorial dispatcher." alt="" coords="5,55,73,79"/>
+<area shape="rect" id="Node000002" href="$utils_8c.html#a7cfc8885aaa713b0686a8d1f36b2f483" title="Factorial via gamma function (supports non&#45;integers)" alt="" coords="122,5,239,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,53,127,33,129,38,74,58"/>
+<area shape="rect" id="Node000003" href="$utils_8c.html#a0b73de2c5ced6e83320662fd9af5fa68" title="Exact factorial using lookup table (0&#45;20)" alt="" coords="136,55,224,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="73,64,121,64,121,70,73,70"/>
+<area shape="rect" id="Node000004" href="$utils_8c.html#ac2ce2e93f97a84c57b18d4e0d4a297c9" title="Factorial approximation using Stirling&#39;s formula." alt="" coords="121,104,240,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="74,76,129,96,127,101,72,81"/>
+</map>

@@ -1,0 +1,107 @@
+\doxysection{utils.\+h}
+\hypertarget{utils_8h_source}{}\label{utils_8h_source}\index{include/utils.h@{include/utils.h}}
+\mbox{\hyperlink{utils_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00001}00001\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ utils.h}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00003}00003\ \textcolor{comment}{\ *\ @brief\ Includes\ Necessary\ utilities\ functions}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00004}00004\ \textcolor{comment}{\ *\ @date\ 22/06/25}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00005}00005\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ \_\_UTILS\_H}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ \_\_UTILS\_H}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00014}00014\ \textcolor{comment}{//\ Maximum\ n\ before\ overflow\ (21!\ overflows\ uint64\_t)}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00015}\mbox{\hyperlink{utils_8h_a64adcd1341b90a9f5e0053cc82b03be4}{00015}}\ \textcolor{preprocessor}{\#define\ MAX\_FACTORIAL\_INPUT\ 20}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00016}00016\ \textcolor{comment}{//\ factorial\ flags}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00017}\mbox{\hyperlink{utils_8h_ae9f928f9ab6d20c1eb9f0ecefded71e4}{00017}}\ \textcolor{preprocessor}{\#define\ FLAG\_FORCE\_LOOKUP\ \ \ 0x01\ \ }\textcolor{comment}{//\ 00000001}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00018}\mbox{\hyperlink{utils_8h_ae064b03785b48c8aadc6833e8baae152}{00018}}\ \textcolor{preprocessor}{\#define\ FLAG\_FORCE\_GAMMA\ \ \ \ 0x02\ \ }\textcolor{comment}{//\ 00000010}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00019}\mbox{\hyperlink{utils_8h_aa51fb048bd65e9bc5de65446d147d985}{00019}}\ \textcolor{preprocessor}{\#define\ FLAG\_FORCE\_STIRLING\ 0x04\ \ }\textcolor{comment}{//\ 00000100}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00020}\mbox{\hyperlink{utils_8h_ae59f2d22b87bffefedd1730a58ad2a83}{00020}}\ \textcolor{preprocessor}{\#define\ FLAG\_PREFER\_EXACT\ \ \ 0x08\ \ }\textcolor{comment}{//\ 00001000}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00022}00022\ \textcolor{comment}{//\ Lookup\ table\ for\ 1!\ to\ 20!\ (fits\ in\ uint64\_t)}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00023}\mbox{\hyperlink{utils_8h_aa108da84121821656d665395734026e9}{00023}}\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint64\_t\ \mbox{\hyperlink{utils_8h_aa108da84121821656d665395734026e9}{FACTORIAL\_LUT}}[21]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00024}00024\ \ \ \ \ 1,\ 1,\ 2,\ 6,\ 24,\ 120,\ 720,\ 5040,\ 40320,\ 362880,\ 3628800,}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00025}00025\ \ \ \ \ 39916800,\ 479001600,\ 6227020800,\ 87178291200,\ 1307674368000,}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00026}00026\ \ \ \ \ 20922789888000,\ 355687428096000,\ 6402373705728000,}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00027}00027\ \ \ \ \ 121645100408832000,\ 2432902008176640000}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00028}00028\ \};}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00029}00029\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00030}00030\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00031}00031\ \textcolor{comment}{\ *\ @brief\ Computes\ factorial\ using\ a\ lookup\ table\ for\ optimal\ performance}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00032}00032\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00033}00033\ \textcolor{comment}{\ *\ @param\ n\ Input\ value\ (0\ <=\ n\ <=\ 20\ for\ exact\ results)}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00034}00034\ \textcolor{comment}{\ *\ @param[out]\ result\ Pointer\ to\ store\ the\ computed\ result}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00035}00035\ \textcolor{comment}{\ *\ @return\ bool\ True\ if\ successful,\ false\ if\ overflow/invalid\ input}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00036}00036\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00037}00037\ \textcolor{comment}{\ *\ @note\ Features:}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00038}00038\ \textcolor{comment}{\ *\ -\/\ O(1)\ lookup\ time\ for\ n\ <=\ 20}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00039}00039\ \textcolor{comment}{\ *\ -\/\ Hardcoded\ exact\ values\ for\ 0!\ to\ 20!}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00040}00040\ \textcolor{comment}{\ *\ -\/\ Immediate\ rejection\ of\ invalid\ inputs}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00041}00041\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00042}00042\ \textcolor{comment}{\ *\ @warning\ Returns\ false\ for:}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00043}00043\ \textcolor{comment}{\ *\ -\/\ Negative\ inputs}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00044}00044\ \textcolor{comment}{\ *\ -\/\ n\ >\ 20\ (would\ overflow\ uint64\_t)}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00045}00045\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00046}00046\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8h_a0b73de2c5ced6e83320662fd9af5fa68}{lut\_factorial}}(\textcolor{keywordtype}{int}\ n,\ uint64\_t*\ result);}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00047}00047\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00048}00048\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00049}00049\ \textcolor{comment}{\ *\ @brief\ Computes\ factorial\ using\ the\ gamma\ function\ for\ extended\ range}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00050}00050\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00051}00051\ \textcolor{comment}{\ *\ @param\ n\ Input\ value\ (n\ >=\ 0)}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00052}00052\ \textcolor{comment}{\ *\ @param[out]\ result\ Pointer\ to\ store\ the\ computed\ result}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00053}00053\ \textcolor{comment}{\ *\ @return\ bool\ True\ if\ successful,\ false\ on\ error/overflow}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00054}00054\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00055}00055\ \textcolor{comment}{\ *\ @note\ Features:}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00056}00056\ \textcolor{comment}{\ *\ -\/\ Uses\ tgamma()\ from\ math.h\ (Γ(n+1)\ =\ n!)}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00057}00057\ \textcolor{comment}{\ *\ -\/\ Supports\ non-\/integer\ values\ through\ gamma\ function}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00058}00058\ \textcolor{comment}{\ *\ -\/\ More\ precise\ than\ Stirling's\ approximation}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00059}00059\ \textcolor{comment}{\ *\ -\/\ handles\ edge\ cases\ and\ overflow\ proection}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00060}00060\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00061}00061\ \textcolor{comment}{\ *\ @warning:}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00062}00062\ \textcolor{comment}{\ *\ -\/\ Slightly\ slower\ than\ lookup\ table}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00063}00063\ \textcolor{comment}{\ *\ -\/\ Limited\ by\ floating-\/point\ precision}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00064}00064\ \textcolor{comment}{\ *\ -\/\ Returns\ false\ for\ negative\ inputs}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00065}00065\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00066}00066\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8h_a7cfc8885aaa713b0686a8d1f36b2f483}{gamma\_factorial}}(double\_t\ n,\ double\_t*\ result);}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00067}00067\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00068}00068\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00069}00069\ \textcolor{comment}{\ *\ @brief\ Computes\ factorial\ approximation\ using\ Stirling's\ formula}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00070}00070\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00071}00071\ \textcolor{comment}{\ *\ @param\ n\ Input\ value\ (n\ >=\ 0)}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00072}00072\ \textcolor{comment}{\ *\ @param[out]\ result\ Pointer\ to\ store\ the\ approximated\ result}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00073}00073\ \textcolor{comment}{\ *\ @return\ bool\ True\ if\ successful,\ false\ on\ invalid\ input}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00074}00074\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00075}00075\ \textcolor{comment}{\ *\ @note\ Features:}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00076}00076\ \textcolor{comment}{\ *\ -\/\ O(1)\ computation\ time}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00077}00077\ \textcolor{comment}{\ *\ -\/\ Good\ approximation\ for\ n\ >\ 20}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00078}00078\ \textcolor{comment}{\ *\ -\/\ Uses\ sqrt(2πn)*(n/e)\string^n*(1\ +\ 1/(12n))}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00079}00079\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00080}00080\ \textcolor{comment}{\ *\ @warning:}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00081}00081\ \textcolor{comment}{\ *\ -\/\ Approximation\ error\ decreases\ as\ n\ increases}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00082}00082\ \textcolor{comment}{\ *\ -\/\ Not\ suitable\ for\ exact\ integer\ results}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00083}00083\ \textcolor{comment}{\ *\ -\/\ Returns\ false\ for\ negative\ inputs}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00084}00084\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00085}00085\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8h_ac2ce2e93f97a84c57b18d4e0d4a297c9}{stirlings\_factorial}}(double\_t\ n,\ double\_t*\ result);}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00086}00086\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00087}00087\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00088}00088\ \textcolor{comment}{\ *\ @brief\ Unified\ factorial\ dispatcher}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00089}00089\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00090}00090\ \textcolor{comment}{\ *\ @param\ n\ Input\ number}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00091}00091\ \textcolor{comment}{\ *\ @param\ result\ Output\ pointer}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00092}00092\ \textcolor{comment}{\ *\ @param\ flags\ Control\ flags:}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00093}00093\ \textcolor{comment}{\ *\ \ \ -\/\ 0x01:\ Force\ lookup\ table}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00094}00094\ \textcolor{comment}{\ *\ \ \ -\/\ 0x02:\ Force\ gamma\ function}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00095}00095\ \textcolor{comment}{\ *\ \ \ -\/\ 0x04:\ Force\ Stirling's}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00096}00096\ \textcolor{comment}{\ *\ \ \ -\/\ 0x08:\ Prefer\ exact\ results}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00097}00097\ \textcolor{comment}{\ *\ @return\ true\ on\ success}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00098}00098\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00099}00099\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{utils_8h_abd589590a78a76840c5c97b9f1159fad}{factorial}}(double\_t\ n,\ double\_t*\ result,\ uint8\_t\ flags);}
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{utils_8h_source_l00101}00101\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !\_\_UTILS\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,19 @@
+<map id="src/vector.c" name="src/vector.c">
+<area shape="rect" id="Node000001" title="Vector computation." alt="" coords="267,5,356,30"/>
+<area shape="rect" id="Node000002" href="$vector_8h.html" title="Includes core vector functionalities." alt="" coords="148,78,215,103"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="292,33,217,73,215,68,289,28"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="239,78,299,103"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="307,32,286,66,282,63,303,29"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="323,78,386,103"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="321,29,342,63,337,66,317,32"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="410,78,475,103"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="335,28,409,68,407,73,332,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,151,80,175"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="159,106,80,146,78,141,157,101"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="104,151,171,175"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="176,105,155,139,150,136,172,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="195,151,258,175"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="191,102,213,136,209,139,186,105"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="282,151,344,175"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="204,101,279,141,277,145,202,106"/>
+</map>

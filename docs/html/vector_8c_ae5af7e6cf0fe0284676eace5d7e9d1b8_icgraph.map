@@ -1,0 +1,5 @@
+<map id="vector_sum" name="vector_sum">
+<area shape="rect" id="Node000001" title="Compute sum of all vector elements." alt="" coords="149,5,237,30"/>
+<area shape="rect" id="Node000002" href="$vector_8c.html#ad1555ed72bab2e60313e51fb92cebc0b" title="Compute mean of vector elements." alt="" coords="5,5,101,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="133,20,101,20,101,15,133,15"/>
+</map>

@@ -1,0 +1,170 @@
+\doxysection{src/utils.c File Reference}
+\hypertarget{utils_8c}{}\label{utils_8c}\index{src/utils.c@{src/utils.c}}
+
+
+Comprehensive factorial computation with multiple methods.  
+
+
+{\ttfamily \#include "{}utils.\+h"{}}\newline
+Include dependency graph for utils.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{utils_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{utils_8c_a0b73de2c5ced6e83320662fd9af5fa68}{lut\+\_\+factorial}} (int n, uint64\+\_\+t \texorpdfstring{$\ast$}{*}result)
+\begin{DoxyCompactList}\small\item\em Exact factorial using lookup table (0-\/20) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils_8c_a7cfc8885aaa713b0686a8d1f36b2f483}{gamma\+\_\+factorial}} (double\+\_\+t n, double\+\_\+t \texorpdfstring{$\ast$}{*}result)
+\begin{DoxyCompactList}\small\item\em Factorial via gamma function (supports non-\/integers) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils_8c_ac2ce2e93f97a84c57b18d4e0d4a297c9}{stirlings\+\_\+factorial}} (double\+\_\+t n, double\+\_\+t \texorpdfstring{$\ast$}{*}result)
+\begin{DoxyCompactList}\small\item\em Factorial approximation using Stirling\textquotesingle{}s formula. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils_8c_abd589590a78a76840c5c97b9f1159fad}{factorial}} (double\+\_\+t n, double\+\_\+t \texorpdfstring{$\ast$}{*}result, uint8\+\_\+t flags)
+\begin{DoxyCompactList}\small\item\em Unified factorial dispatcher. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Comprehensive factorial computation with multiple methods. 
+
+\begin{DoxyDate}{Date}
+22/06/25 
+\end{DoxyDate}
+
+
+Definition in file \mbox{\hyperlink{utils_8c_source}{utils.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{utils_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{utils_8c_abd589590a78a76840c5c97b9f1159fad}\index{utils.c@{utils.c}!factorial@{factorial}}
+\index{factorial@{factorial}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{factorial()}{factorial()}}
+{\footnotesize\ttfamily \label{utils_8c_abd589590a78a76840c5c97b9f1159fad} 
+bool factorial (\begin{DoxyParamCaption}\item[{double\+\_\+t}]{n}{, }\item[{double\+\_\+t \texorpdfstring{$\ast$}{*}}]{result}{, }\item[{uint8\+\_\+t}]{flags}{}\end{DoxyParamCaption})}
+
+
+
+Unified factorial dispatcher. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Input number \\
+\hline
+{\em result} & Output pointer \\
+\hline
+{\em flags} & Control flags\+:
+\begin{DoxyItemize}
+\item 0x01\+: Force lookup table
+\item 0x02\+: Force gamma function
+\item 0x04\+: Force Stirling\textquotesingle{}s
+\item 0x08\+: Prefer exact results 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{utils_8c_source_l00049}{49}} of file \mbox{\hyperlink{utils_8c_source}{utils.\+c}}.
+
+
+
+References \mbox{\hyperlink{utils_8h_source_l00018}{FLAG\+\_\+\+FORCE\+\_\+\+GAMMA}}, \mbox{\hyperlink{utils_8h_source_l00017}{FLAG\+\_\+\+FORCE\+\_\+\+LOOKUP}}, \mbox{\hyperlink{utils_8h_source_l00019}{FLAG\+\_\+\+FORCE\+\_\+\+STIRLING}}, \mbox{\hyperlink{utils_8h_source_l00020}{FLAG\+\_\+\+PREFER\+\_\+\+EXACT}}, \mbox{\hyperlink{utils_8c_source_l00021}{gamma\+\_\+factorial()}}, \mbox{\hyperlink{utils_8c_source_l00012}{lut\+\_\+factorial()}}, and \mbox{\hyperlink{utils_8c_source_l00033}{stirlings\+\_\+factorial()}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{utils_8c_abd589590a78a76840c5c97b9f1159fad_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{utils_8c_a7cfc8885aaa713b0686a8d1f36b2f483}\index{utils.c@{utils.c}!gamma\_factorial@{gamma\_factorial}}
+\index{gamma\_factorial@{gamma\_factorial}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{gamma\_factorial()}{gamma\_factorial()}}
+{\footnotesize\ttfamily \label{utils_8c_a7cfc8885aaa713b0686a8d1f36b2f483} 
+bool gamma\+\_\+factorial (\begin{DoxyParamCaption}\item[{double\+\_\+t}]{n}{, }\item[{double\+\_\+t \texorpdfstring{$\ast$}{*}}]{result}{}\end{DoxyParamCaption})}
+
+
+
+Factorial via gamma function (supports non-\/integers) 
+
+Computes factorial using the gamma function for extended range. 
+
+Definition at line \mbox{\hyperlink{utils_8c_source_l00021}{21}} of file \mbox{\hyperlink{utils_8c_source}{utils.\+c}}.
+
+
+
+Referenced by \mbox{\hyperlink{utils_8c_source_l00049}{factorial()}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{utils_8c_a7cfc8885aaa713b0686a8d1f36b2f483_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{utils_8c_a0b73de2c5ced6e83320662fd9af5fa68}\index{utils.c@{utils.c}!lut\_factorial@{lut\_factorial}}
+\index{lut\_factorial@{lut\_factorial}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{lut\_factorial()}{lut\_factorial()}}
+{\footnotesize\ttfamily \label{utils_8c_a0b73de2c5ced6e83320662fd9af5fa68} 
+bool lut\+\_\+factorial (\begin{DoxyParamCaption}\item[{int}]{n}{, }\item[{uint64\+\_\+t \texorpdfstring{$\ast$}{*}}]{result}{}\end{DoxyParamCaption})}
+
+
+
+Exact factorial using lookup table (0-\/20) 
+
+Computes factorial using a lookup table for optimal performance. 
+
+Definition at line \mbox{\hyperlink{utils_8c_source_l00012}{12}} of file \mbox{\hyperlink{utils_8c_source}{utils.\+c}}.
+
+
+
+References \mbox{\hyperlink{utils_8h_source_l00023}{FACTORIAL\+\_\+\+LUT}}.
+
+
+
+Referenced by \mbox{\hyperlink{utils_8c_source_l00049}{factorial()}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{utils_8c_a0b73de2c5ced6e83320662fd9af5fa68_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{utils_8c_ac2ce2e93f97a84c57b18d4e0d4a297c9}\index{utils.c@{utils.c}!stirlings\_factorial@{stirlings\_factorial}}
+\index{stirlings\_factorial@{stirlings\_factorial}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{stirlings\_factorial()}{stirlings\_factorial()}}
+{\footnotesize\ttfamily \label{utils_8c_ac2ce2e93f97a84c57b18d4e0d4a297c9} 
+bool stirlings\+\_\+factorial (\begin{DoxyParamCaption}\item[{double\+\_\+t}]{n}{, }\item[{double\+\_\+t \texorpdfstring{$\ast$}{*}}]{result}{}\end{DoxyParamCaption})}
+
+
+
+Factorial approximation using Stirling\textquotesingle{}s formula. 
+
+Computes factorial approximation using Stirling\textquotesingle{}s formula. 
+
+Definition at line \mbox{\hyperlink{utils_8c_source_l00033}{33}} of file \mbox{\hyperlink{utils_8c_source}{utils.\+c}}.
+
+
+
+Referenced by \mbox{\hyperlink{utils_8c_source_l00049}{factorial()}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{utils_8c_ac2ce2e93f97a84c57b18d4e0d4a297c9_icgraph}
+\end{center}
+\end{figure}

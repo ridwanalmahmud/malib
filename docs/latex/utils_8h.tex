@@ -1,0 +1,376 @@
+\doxysection{include/utils.h File Reference}
+\hypertarget{utils_8h}{}\label{utils_8h}\index{include/utils.h@{include/utils.h}}
+
+
+Includes Necessary utilities functions.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+Include dependency graph for utils.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{utils_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=156pt]{utils_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{utils_8h_a64adcd1341b90a9f5e0053cc82b03be4}{MAX\+\_\+\+FACTORIAL\+\_\+\+INPUT}}~20
+\item 
+\#define \mbox{\hyperlink{utils_8h_ae9f928f9ab6d20c1eb9f0ecefded71e4}{FLAG\+\_\+\+FORCE\+\_\+\+LOOKUP}}~0x01
+\item 
+\#define \mbox{\hyperlink{utils_8h_ae064b03785b48c8aadc6833e8baae152}{FLAG\+\_\+\+FORCE\+\_\+\+GAMMA}}~0x02
+\item 
+\#define \mbox{\hyperlink{utils_8h_aa51fb048bd65e9bc5de65446d147d985}{FLAG\+\_\+\+FORCE\+\_\+\+STIRLING}}~0x04
+\item 
+\#define \mbox{\hyperlink{utils_8h_ae59f2d22b87bffefedd1730a58ad2a83}{FLAG\+\_\+\+PREFER\+\_\+\+EXACT}}~0x08
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{utils_8h_a0b73de2c5ced6e83320662fd9af5fa68}{lut\+\_\+factorial}} (int n, uint64\+\_\+t \texorpdfstring{$\ast$}{*}result)
+\begin{DoxyCompactList}\small\item\em Computes factorial using a lookup table for optimal performance. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils_8h_a7cfc8885aaa713b0686a8d1f36b2f483}{gamma\+\_\+factorial}} (double\+\_\+t n, double\+\_\+t \texorpdfstring{$\ast$}{*}result)
+\begin{DoxyCompactList}\small\item\em Computes factorial using the gamma function for extended range. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils_8h_ac2ce2e93f97a84c57b18d4e0d4a297c9}{stirlings\+\_\+factorial}} (double\+\_\+t n, double\+\_\+t \texorpdfstring{$\ast$}{*}result)
+\begin{DoxyCompactList}\small\item\em Computes factorial approximation using Stirling\textquotesingle{}s formula. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils_8h_abd589590a78a76840c5c97b9f1159fad}{factorial}} (double\+\_\+t n, double\+\_\+t \texorpdfstring{$\ast$}{*}result, uint8\+\_\+t flags)
+\begin{DoxyCompactList}\small\item\em Unified factorial dispatcher. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const uint64\+\_\+t \mbox{\hyperlink{utils_8h_aa108da84121821656d665395734026e9}{FACTORIAL\+\_\+\+LUT}} \mbox{[}21\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Includes Necessary utilities functions. 
+
+\begin{DoxyDate}{Date}
+22/06/25 
+\end{DoxyDate}
+
+
+Definition in file \mbox{\hyperlink{utils_8h_source}{utils.\+h}}.
+
+
+
+\label{doc-define-members}
+\Hypertarget{utils_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{utils_8h_ae064b03785b48c8aadc6833e8baae152}\index{utils.h@{utils.h}!FLAG\_FORCE\_GAMMA@{FLAG\_FORCE\_GAMMA}}
+\index{FLAG\_FORCE\_GAMMA@{FLAG\_FORCE\_GAMMA}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_FORCE\_GAMMA}{FLAG\_FORCE\_GAMMA}}
+{\footnotesize\ttfamily \label{utils_8h_ae064b03785b48c8aadc6833e8baae152} 
+\#define FLAG\+\_\+\+FORCE\+\_\+\+GAMMA~0x02}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8h_source_l00018}{18}} of file \mbox{\hyperlink{utils_8h_source}{utils.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{utils_8c_source_l00049}{factorial()}}.
+
+\Hypertarget{utils_8h_ae9f928f9ab6d20c1eb9f0ecefded71e4}\index{utils.h@{utils.h}!FLAG\_FORCE\_LOOKUP@{FLAG\_FORCE\_LOOKUP}}
+\index{FLAG\_FORCE\_LOOKUP@{FLAG\_FORCE\_LOOKUP}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_FORCE\_LOOKUP}{FLAG\_FORCE\_LOOKUP}}
+{\footnotesize\ttfamily \label{utils_8h_ae9f928f9ab6d20c1eb9f0ecefded71e4} 
+\#define FLAG\+\_\+\+FORCE\+\_\+\+LOOKUP~0x01}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8h_source_l00017}{17}} of file \mbox{\hyperlink{utils_8h_source}{utils.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{utils_8c_source_l00049}{factorial()}}.
+
+\Hypertarget{utils_8h_aa51fb048bd65e9bc5de65446d147d985}\index{utils.h@{utils.h}!FLAG\_FORCE\_STIRLING@{FLAG\_FORCE\_STIRLING}}
+\index{FLAG\_FORCE\_STIRLING@{FLAG\_FORCE\_STIRLING}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_FORCE\_STIRLING}{FLAG\_FORCE\_STIRLING}}
+{\footnotesize\ttfamily \label{utils_8h_aa51fb048bd65e9bc5de65446d147d985} 
+\#define FLAG\+\_\+\+FORCE\+\_\+\+STIRLING~0x04}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8h_source_l00019}{19}} of file \mbox{\hyperlink{utils_8h_source}{utils.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{utils_8c_source_l00049}{factorial()}}.
+
+\Hypertarget{utils_8h_ae59f2d22b87bffefedd1730a58ad2a83}\index{utils.h@{utils.h}!FLAG\_PREFER\_EXACT@{FLAG\_PREFER\_EXACT}}
+\index{FLAG\_PREFER\_EXACT@{FLAG\_PREFER\_EXACT}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{FLAG\_PREFER\_EXACT}{FLAG\_PREFER\_EXACT}}
+{\footnotesize\ttfamily \label{utils_8h_ae59f2d22b87bffefedd1730a58ad2a83} 
+\#define FLAG\+\_\+\+PREFER\+\_\+\+EXACT~0x08}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8h_source_l00020}{20}} of file \mbox{\hyperlink{utils_8h_source}{utils.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{utils_8c_source_l00049}{factorial()}}.
+
+\Hypertarget{utils_8h_a64adcd1341b90a9f5e0053cc82b03be4}\index{utils.h@{utils.h}!MAX\_FACTORIAL\_INPUT@{MAX\_FACTORIAL\_INPUT}}
+\index{MAX\_FACTORIAL\_INPUT@{MAX\_FACTORIAL\_INPUT}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_FACTORIAL\_INPUT}{MAX\_FACTORIAL\_INPUT}}
+{\footnotesize\ttfamily \label{utils_8h_a64adcd1341b90a9f5e0053cc82b03be4} 
+\#define MAX\+\_\+\+FACTORIAL\+\_\+\+INPUT~20}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8h_source_l00015}{15}} of file \mbox{\hyperlink{utils_8h_source}{utils.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{utils_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{utils_8h_abd589590a78a76840c5c97b9f1159fad}\index{utils.h@{utils.h}!factorial@{factorial}}
+\index{factorial@{factorial}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{factorial()}{factorial()}}
+{\footnotesize\ttfamily \label{utils_8h_abd589590a78a76840c5c97b9f1159fad} 
+bool factorial (\begin{DoxyParamCaption}\item[{double\+\_\+t}]{n}{, }\item[{double\+\_\+t \texorpdfstring{$\ast$}{*}}]{result}{, }\item[{uint8\+\_\+t}]{flags}{}\end{DoxyParamCaption})}
+
+
+
+Unified factorial dispatcher. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Input number \\
+\hline
+{\em result} & Output pointer \\
+\hline
+{\em flags} & Control flags\+:
+\begin{DoxyItemize}
+\item 0x01\+: Force lookup table
+\item 0x02\+: Force gamma function
+\item 0x04\+: Force Stirling\textquotesingle{}s
+\item 0x08\+: Prefer exact results 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{utils_8c_source_l00049}{49}} of file \mbox{\hyperlink{utils_8c_source}{utils.\+c}}.
+
+
+
+References \mbox{\hyperlink{utils_8h_source_l00018}{FLAG\+\_\+\+FORCE\+\_\+\+GAMMA}}, \mbox{\hyperlink{utils_8h_source_l00017}{FLAG\+\_\+\+FORCE\+\_\+\+LOOKUP}}, \mbox{\hyperlink{utils_8h_source_l00019}{FLAG\+\_\+\+FORCE\+\_\+\+STIRLING}}, \mbox{\hyperlink{utils_8h_source_l00020}{FLAG\+\_\+\+PREFER\+\_\+\+EXACT}}, \mbox{\hyperlink{utils_8c_source_l00021}{gamma\+\_\+factorial()}}, \mbox{\hyperlink{utils_8c_source_l00012}{lut\+\_\+factorial()}}, and \mbox{\hyperlink{utils_8c_source_l00033}{stirlings\+\_\+factorial()}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{utils_8h_abd589590a78a76840c5c97b9f1159fad_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{utils_8h_a7cfc8885aaa713b0686a8d1f36b2f483}\index{utils.h@{utils.h}!gamma\_factorial@{gamma\_factorial}}
+\index{gamma\_factorial@{gamma\_factorial}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{gamma\_factorial()}{gamma\_factorial()}}
+{\footnotesize\ttfamily \label{utils_8h_a7cfc8885aaa713b0686a8d1f36b2f483} 
+bool gamma\+\_\+factorial (\begin{DoxyParamCaption}\item[{double\+\_\+t}]{n}{, }\item[{double\+\_\+t \texorpdfstring{$\ast$}{*}}]{result}{}\end{DoxyParamCaption})}
+
+
+
+Computes factorial using the gamma function for extended range. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em n} & Input value (n \texorpdfstring{$>$}{>}= 0) \\
+\hline
+\mbox{\texttt{out}}  & {\em result} & Pointer to store the computed result \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if successful, false on error/overflow
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Features\+:
+\begin{DoxyItemize}
+\item Uses tgamma() from math.\+h (Γ(n+1) = n!)
+\item Supports non-\/integer values through gamma function
+\item More precise than Stirling\textquotesingle{}s approximation
+\item handles edge cases and overflow proection
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+\+:
+\begin{DoxyItemize}
+\item Slightly slower than lookup table
+\item Limited by floating-\/point precision
+\item Returns false for negative inputs
+\end{DoxyItemize}
+\end{DoxyWarning}
+Computes factorial using the gamma function for extended range. 
+
+Definition at line \mbox{\hyperlink{utils_8c_source_l00021}{21}} of file \mbox{\hyperlink{utils_8c_source}{utils.\+c}}.
+
+
+
+Referenced by \mbox{\hyperlink{utils_8c_source_l00049}{factorial()}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{utils_8h_a7cfc8885aaa713b0686a8d1f36b2f483_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{utils_8h_a0b73de2c5ced6e83320662fd9af5fa68}\index{utils.h@{utils.h}!lut\_factorial@{lut\_factorial}}
+\index{lut\_factorial@{lut\_factorial}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{lut\_factorial()}{lut\_factorial()}}
+{\footnotesize\ttfamily \label{utils_8h_a0b73de2c5ced6e83320662fd9af5fa68} 
+bool lut\+\_\+factorial (\begin{DoxyParamCaption}\item[{int}]{n}{, }\item[{uint64\+\_\+t \texorpdfstring{$\ast$}{*}}]{result}{}\end{DoxyParamCaption})}
+
+
+
+Computes factorial using a lookup table for optimal performance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em n} & Input value (0 \texorpdfstring{$<$}{<}= n \texorpdfstring{$<$}{<}= 20 for exact results) \\
+\hline
+\mbox{\texttt{out}}  & {\em result} & Pointer to store the computed result \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if successful, false if overflow/invalid input
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Features\+:
+\begin{DoxyItemize}
+\item O(1) lookup time for n \texorpdfstring{$<$}{<}= 20
+\item Hardcoded exact values for 0! to 20!
+\item Immediate rejection of invalid inputs
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+Returns false for\+:
+\begin{DoxyItemize}
+\item Negative inputs
+\item n \texorpdfstring{$>$}{>} 20 (would overflow uint64\+\_\+t)
+\end{DoxyItemize}
+\end{DoxyWarning}
+Computes factorial using a lookup table for optimal performance. 
+
+Definition at line \mbox{\hyperlink{utils_8c_source_l00012}{12}} of file \mbox{\hyperlink{utils_8c_source}{utils.\+c}}.
+
+
+
+References \mbox{\hyperlink{utils_8h_source_l00023}{FACTORIAL\+\_\+\+LUT}}.
+
+
+
+Referenced by \mbox{\hyperlink{utils_8c_source_l00049}{factorial()}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{utils_8h_a0b73de2c5ced6e83320662fd9af5fa68_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{utils_8h_ac2ce2e93f97a84c57b18d4e0d4a297c9}\index{utils.h@{utils.h}!stirlings\_factorial@{stirlings\_factorial}}
+\index{stirlings\_factorial@{stirlings\_factorial}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{stirlings\_factorial()}{stirlings\_factorial()}}
+{\footnotesize\ttfamily \label{utils_8h_ac2ce2e93f97a84c57b18d4e0d4a297c9} 
+bool stirlings\+\_\+factorial (\begin{DoxyParamCaption}\item[{double\+\_\+t}]{n}{, }\item[{double\+\_\+t \texorpdfstring{$\ast$}{*}}]{result}{}\end{DoxyParamCaption})}
+
+
+
+Computes factorial approximation using Stirling\textquotesingle{}s formula. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em n} & Input value (n \texorpdfstring{$>$}{>}= 0) \\
+\hline
+\mbox{\texttt{out}}  & {\em result} & Pointer to store the approximated result \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if successful, false on invalid input
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Features\+:
+\begin{DoxyItemize}
+\item O(1) computation time
+\item Good approximation for n \texorpdfstring{$>$}{>} 20
+\item Uses sqrt(2πn)\texorpdfstring{$\ast$}{*}(n/e)\texorpdfstring{$^\wedge$}{\string^}n\texorpdfstring{$\ast$}{*}(1 + 1/(12n))
+\end{DoxyItemize}
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+\+:
+\begin{DoxyItemize}
+\item Approximation error decreases as n increases
+\item Not suitable for exact integer results
+\item Returns false for negative inputs
+\end{DoxyItemize}
+\end{DoxyWarning}
+Computes factorial approximation using Stirling\textquotesingle{}s formula. 
+
+Definition at line \mbox{\hyperlink{utils_8c_source_l00033}{33}} of file \mbox{\hyperlink{utils_8c_source}{utils.\+c}}.
+
+
+
+Referenced by \mbox{\hyperlink{utils_8c_source_l00049}{factorial()}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{utils_8h_ac2ce2e93f97a84c57b18d4e0d4a297c9_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-var-members}
+\Hypertarget{utils_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{utils_8h_aa108da84121821656d665395734026e9}\index{utils.h@{utils.h}!FACTORIAL\_LUT@{FACTORIAL\_LUT}}
+\index{FACTORIAL\_LUT@{FACTORIAL\_LUT}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{FACTORIAL\_LUT}{FACTORIAL\_LUT}}
+{\footnotesize\ttfamily \label{utils_8h_aa108da84121821656d665395734026e9} 
+const uint64\+\_\+t FACTORIAL\+\_\+\+LUT\mbox{[}21\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ 1,\ 1,\ 2,\ 6,\ 24,\ 120,\ 720,\ 5040,\ 40320,\ 362880,\ 3628800,}
+\DoxyCodeLine{\ \ \ \ 39916800,\ 479001600,\ 6227020800,\ 87178291200,\ 1307674368000,}
+\DoxyCodeLine{\ \ \ \ 20922789888000,\ 355687428096000,\ 6402373705728000,}
+\DoxyCodeLine{\ \ \ \ 121645100408832000,\ 2432902008176640000}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{utils_8h_source_l00023}{23}} of file \mbox{\hyperlink{utils_8h_source}{utils.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{utils_8c_source_l00012}{lut\+\_\+factorial()}}.
+

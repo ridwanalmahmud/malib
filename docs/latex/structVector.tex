@@ -1,0 +1,103 @@
+\doxysection{Vector Struct Reference}
+\hypertarget{structVector}{}\label{structVector}\index{Vector@{Vector}}
+
+
+\doxylink{structVector}{Vector} structure containing elements and metadata.  
+
+
+
+
+{\ttfamily \#include $<$vector.\+h$>$}
+
+
+
+Collaboration diagram for Vector\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=138pt]{structVector__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structVector_a03408e6097f573e16e33bb70b1b97e58}{elements}}
+\begin{DoxyCompactList}\small\item\em Pointer to dynamically allocated array of elements. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{structVector_ae4665570b1b91f783645fa0e2eb884af}{size}}
+\begin{DoxyCompactList}\small\item\em Current number of elements in vector. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{structVector_ad2b86d50e94fbaae2cc65a320b092b0a}{capacity}}
+\begin{DoxyCompactList}\small\item\em Currently allocated capacity of vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{structVector}{Vector} structure containing elements and metadata. 
+
+The vector owns its elements array and is responsible for freeing it. 
+
+Definition at line \mbox{\hyperlink{vector_8h_source_l00035}{35}} of file \mbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structVector_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structVector_ad2b86d50e94fbaae2cc65a320b092b0a}\index{Vector@{Vector}!capacity@{capacity}}
+\index{capacity@{capacity}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{capacity}{capacity}}
+{\footnotesize\ttfamily \label{structVector_ad2b86d50e94fbaae2cc65a320b092b0a} 
+size\+\_\+t Vector\+::capacity}
+
+
+
+Currently allocated capacity of vector. 
+
+
+
+Definition at line \mbox{\hyperlink{vector_8h_source_l00038}{38}} of file \mbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{vector_8c_source_l00256}{vector\+\_\+capacity()}}, \mbox{\hyperlink{vector_8c_source_l00025}{vector\+\_\+create()}}, \mbox{\hyperlink{vector_8c_source_l00049}{vector\+\_\+init()}}, \mbox{\hyperlink{vector_8c_source_l00161}{vector\+\_\+reserve()}}, \mbox{\hyperlink{vector_8c_source_l00134}{vector\+\_\+resize()}}, and \mbox{\hyperlink{vector_8c_source_l00177}{vector\+\_\+shrink\+\_\+to\+\_\+fit()}}.
+
+\Hypertarget{structVector_a03408e6097f573e16e33bb70b1b97e58}\index{Vector@{Vector}!elements@{elements}}
+\index{elements@{elements}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{elements}{elements}}
+{\footnotesize\ttfamily \label{structVector_a03408e6097f573e16e33bb70b1b97e58} 
+double\+\_\+t\texorpdfstring{$\ast$}{*} Vector\+::elements}
+
+
+
+Pointer to dynamically allocated array of elements. 
+
+
+
+Definition at line \mbox{\hyperlink{vector_8h_source_l00036}{36}} of file \mbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{vector_8c_source_l00837}{vector\+\_\+abs()}}, \mbox{\hyperlink{vector_8c_source_l00316}{vector\+\_\+add()}}, \mbox{\hyperlink{vector_8c_source_l00888}{vector\+\_\+ceil()}}, \mbox{\hyperlink{vector_8c_source_l00108}{vector\+\_\+copy()}}, \mbox{\hyperlink{vector_8c_source_l00025}{vector\+\_\+create()}}, \mbox{\hyperlink{vector_8c_source_l00456}{vector\+\_\+cross()}}, \mbox{\hyperlink{vector_8c_source_l00229}{vector\+\_\+data()}}, \mbox{\hyperlink{vector_8c_source_l00528}{vector\+\_\+distance()}}, \mbox{\hyperlink{vector_8c_source_l00372}{vector\+\_\+div()}}, \mbox{\hyperlink{vector_8c_source_l00405}{vector\+\_\+dot()}}, \mbox{\hyperlink{vector_8c_source_l00941}{vector\+\_\+equals()}}, \mbox{\hyperlink{vector_8c_source_l00862}{vector\+\_\+floor()}}, \mbox{\hyperlink{vector_8c_source_l00123}{vector\+\_\+free()}}, \mbox{\hyperlink{vector_8c_source_l00205}{vector\+\_\+get()}}, \mbox{\hyperlink{vector_8c_source_l00049}{vector\+\_\+init()}}, \mbox{\hyperlink{vector_8c_source_l00978}{vector\+\_\+is\+\_\+unit()}}, \mbox{\hyperlink{vector_8c_source_l00961}{vector\+\_\+is\+\_\+zero()}}, \mbox{\hyperlink{vector_8c_source_l00579}{vector\+\_\+lerp()}}, \mbox{\hyperlink{vector_8c_source_l00771}{vector\+\_\+max()}}, \mbox{\hyperlink{vector_8c_source_l00742}{vector\+\_\+min()}}, \mbox{\hyperlink{vector_8c_source_l00358}{vector\+\_\+mult()}}, \mbox{\hyperlink{vector_8c_source_l00239}{vector\+\_\+mutable\+\_\+data()}}, \mbox{\hyperlink{vector_8c_source_l00388}{vector\+\_\+negate()}}, \mbox{\hyperlink{vector_8c_source_l00493}{vector\+\_\+normalize()}}, \mbox{\hyperlink{vector_8c_source_l00995}{vector\+\_\+print()}}, \mbox{\hyperlink{vector_8c_source_l00651}{vector\+\_\+project()}}, \mbox{\hyperlink{vector_8c_source_l00708}{vector\+\_\+reflect()}}, \mbox{\hyperlink{vector_8c_source_l00683}{vector\+\_\+reject()}}, \mbox{\hyperlink{vector_8c_source_l00161}{vector\+\_\+reserve()}}, \mbox{\hyperlink{vector_8c_source_l00134}{vector\+\_\+resize()}}, \mbox{\hyperlink{vector_8c_source_l00074}{vector\+\_\+resize\+\_\+zero()}}, \mbox{\hyperlink{vector_8c_source_l00915}{vector\+\_\+round()}}, \mbox{\hyperlink{vector_8c_source_l00344}{vector\+\_\+scale()}}, \mbox{\hyperlink{vector_8c_source_l00217}{vector\+\_\+set()}}, \mbox{\hyperlink{vector_8c_source_l00177}{vector\+\_\+shrink\+\_\+to\+\_\+fit()}}, \mbox{\hyperlink{vector_8c_source_l00610}{vector\+\_\+slerp()}}, \mbox{\hyperlink{vector_8c_source_l00330}{vector\+\_\+sub()}}, \mbox{\hyperlink{vector_8c_source_l00798}{vector\+\_\+sum()}}, \mbox{\hyperlink{vector_8c_source_l00012}{vector\+\_\+valid()}}, and \mbox{\hyperlink{vector_8c_source_l00064}{vector\+\_\+zero()}}.
+
+\Hypertarget{structVector_ae4665570b1b91f783645fa0e2eb884af}\index{Vector@{Vector}!size@{size}}
+\index{size@{size}!Vector@{Vector}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily \label{structVector_ae4665570b1b91f783645fa0e2eb884af} 
+size\+\_\+t Vector\+::size}
+
+
+
+Current number of elements in vector. 
+
+
+
+Definition at line \mbox{\hyperlink{vector_8h_source_l00037}{37}} of file \mbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{vector_8c_source_l00837}{vector\+\_\+abs()}}, \mbox{\hyperlink{vector_8c_source_l00316}{vector\+\_\+add()}}, \mbox{\hyperlink{vector_8c_source_l00551}{vector\+\_\+angle()}}, \mbox{\hyperlink{vector_8c_source_l00888}{vector\+\_\+ceil()}}, \mbox{\hyperlink{vector_8c_source_l00108}{vector\+\_\+copy()}}, \mbox{\hyperlink{vector_8c_source_l00025}{vector\+\_\+create()}}, \mbox{\hyperlink{vector_8c_source_l00456}{vector\+\_\+cross()}}, \mbox{\hyperlink{vector_8c_source_l00528}{vector\+\_\+distance()}}, \mbox{\hyperlink{vector_8c_source_l00372}{vector\+\_\+div()}}, \mbox{\hyperlink{vector_8c_source_l00405}{vector\+\_\+dot()}}, \mbox{\hyperlink{vector_8c_source_l00941}{vector\+\_\+equals()}}, \mbox{\hyperlink{vector_8c_source_l00862}{vector\+\_\+floor()}}, \mbox{\hyperlink{vector_8c_source_l00205}{vector\+\_\+get()}}, \mbox{\hyperlink{vector_8c_source_l00049}{vector\+\_\+init()}}, \mbox{\hyperlink{vector_8c_source_l00978}{vector\+\_\+is\+\_\+unit()}}, \mbox{\hyperlink{vector_8c_source_l00961}{vector\+\_\+is\+\_\+zero()}}, \mbox{\hyperlink{vector_8c_source_l00579}{vector\+\_\+lerp()}}, \mbox{\hyperlink{vector_8c_source_l00771}{vector\+\_\+max()}}, \mbox{\hyperlink{vector_8c_source_l00819}{vector\+\_\+mean()}}, \mbox{\hyperlink{vector_8c_source_l00742}{vector\+\_\+min()}}, \mbox{\hyperlink{vector_8c_source_l00358}{vector\+\_\+mult()}}, \mbox{\hyperlink{vector_8c_source_l00388}{vector\+\_\+negate()}}, \mbox{\hyperlink{vector_8c_source_l00493}{vector\+\_\+normalize()}}, \mbox{\hyperlink{vector_8c_source_l00995}{vector\+\_\+print()}}, \mbox{\hyperlink{vector_8c_source_l00651}{vector\+\_\+project()}}, \mbox{\hyperlink{vector_8c_source_l00708}{vector\+\_\+reflect()}}, \mbox{\hyperlink{vector_8c_source_l00683}{vector\+\_\+reject()}}, \mbox{\hyperlink{vector_8c_source_l00134}{vector\+\_\+resize()}}, \mbox{\hyperlink{vector_8c_source_l00915}{vector\+\_\+round()}}, \mbox{\hyperlink{vector_8c_source_l00344}{vector\+\_\+scale()}}, \mbox{\hyperlink{vector_8c_source_l00217}{vector\+\_\+set()}}, \mbox{\hyperlink{vector_8c_source_l00177}{vector\+\_\+shrink\+\_\+to\+\_\+fit()}}, \mbox{\hyperlink{vector_8c_source_l00249}{vector\+\_\+size()}}, \mbox{\hyperlink{vector_8c_source_l00610}{vector\+\_\+slerp()}}, \mbox{\hyperlink{vector_8c_source_l00330}{vector\+\_\+sub()}}, \mbox{\hyperlink{vector_8c_source_l00798}{vector\+\_\+sum()}}, and \mbox{\hyperlink{vector_8c_source_l00064}{vector\+\_\+zero()}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{vector_8h}{vector.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,15 @@
+<map id="vector_reflect" name="vector_reflect">
+<area shape="rect" id="Node000001" title="Reflect vector a over vector b (like mirror reflection)" alt="" coords="5,80,105,105"/>
+<area shape="rect" id="Node000002" href="$vector_8c.html#a92167f6ca9c67ea7258b63f9016e9509" title="Create a new vector with specified size." alt="" coords="154,5,254,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,77,151,41,163,35,165,40,154,45,82,82"/>
+<area shape="rect" id="Node000003" href="$vector_8c.html#a6052d66f055cffe9ec297f112cb70cbd" title="Free memory allocated by vector." alt="" coords="161,55,246,79"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="105,81,146,74,147,79,105,87"/>
+<area shape="rect" id="Node000004" href="$vector_8c.html#ac3b763666c7403b636f78a69c95b85d4" title="Project vector a onto vector b." alt="" coords="153,104,255,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="105,98,137,103,137,108,105,103"/>
+<area shape="rect" id="Node000006" href="$vector_8c.html#a56ace2f765273db9af5fc21d854dabc0" title="Check if a vector is valid (non&#45;null and has allocated elements)" alt="" coords="432,104,522,129"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="77,103,112,122,153,138,223,147,294,146,361,139,417,129,418,134,362,144,295,152,223,153,152,143,109,127,74,108"/>
+<area shape="rect" id="Node000005" href="$vector_8c.html#adae9a90e18d54eb1b8c5ee28acda56a6" title="Dot product of two vectors." alt="" coords="303,55,384,79"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="240,101,291,83,293,88,242,106"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="255,114,417,114,417,119,255,119"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="380,77,428,96,426,101,378,82"/>
+</map>

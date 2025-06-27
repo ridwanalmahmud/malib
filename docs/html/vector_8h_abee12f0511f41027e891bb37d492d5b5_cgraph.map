@@ -1,0 +1,5 @@
+<map id="vector_div" name="vector_div">
+<area shape="rect" id="Node000001" title="Element&#45;wise vector division (result = a / b)" alt="" coords="5,5,86,30"/>
+<area shape="rect" id="Node000002" href="$vector_8c.html#a56ace2f765273db9af5fc21d854dabc0" title="Check if a vector is valid (non&#45;null and has allocated elements)" alt="" coords="134,5,223,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,15,118,15,118,20,86,20"/>
+</map>

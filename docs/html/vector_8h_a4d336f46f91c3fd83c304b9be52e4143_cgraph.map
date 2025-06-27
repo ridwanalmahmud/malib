@@ -1,0 +1,11 @@
+<map id="vector_normalize" name="vector_normalize">
+<area shape="rect" id="Node000001" title="Normalize vector in&#45;place (make unit length)" alt="" coords="5,80,124,105"/>
+<area shape="rect" id="Node000002" href="$vector_8c.html#a67874e5816d4f0cd697c14be67d0ecf1" title="Compute magnitude (length) of vector." alt="" coords="172,55,295,79"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,81,156,76,157,81,124,86"/>
+<area shape="rect" id="Node000004" href="$vector_8c.html#a56ace2f765273db9af5fc21d854dabc0" title="Check if a vector is valid (non&#45;null and has allocated elements)" alt="" coords="472,55,562,79"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="124,91,295,88,457,72,457,78,295,94,124,96"/>
+<area shape="rect" id="Node000003" href="$vector_8c.html#adae9a90e18d54eb1b8c5ee28acda56a6" title="Dot product of two vectors." alt="" coords="343,5,424,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="273,52,329,33,330,38,274,57"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="296,64,457,64,457,70,296,70"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="420,28,468,46,466,51,418,33"/>
+</map>

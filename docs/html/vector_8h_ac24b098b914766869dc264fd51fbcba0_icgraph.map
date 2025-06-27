@@ -1,0 +1,5 @@
+<map id="vector_lerp" name="vector_lerp">
+<area shape="rect" id="Node000001" title="Linear interpolation between two vectors." alt="" coords="146,5,231,30"/>
+<area shape="rect" id="Node000002" href="$vector_8c.html#a9776cabefa7fe4b72d1b424ea12f17a7" title="Spherical linear interpolation between two vectors." alt="" coords="5,5,98,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,20,98,20,98,15,130,15"/>
+</map>
